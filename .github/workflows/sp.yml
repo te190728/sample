@@ -1,17 +1,14 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Deploy to Amazon
-
-on:
-  push:
-    branches:
-      - main
-
+name: learn-github-actions
+on: [push]
 jobs:
-  Test:
-    name: Test
+  check-bats-version:
     runs-on: ubuntu-latest
-
     steps:
-      - name: echoTest
-        run: echo "Test"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
+      
+#リポジトリに変更をpushするたびに上記が自動的に実行される
