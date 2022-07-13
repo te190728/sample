@@ -17,6 +17,14 @@ jobs:
       - name: repo　#リポジトリの内容を取得
         uses: actions/checkout@v2
         
+      - name: Deploy to ec2 #ec2にアップ
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        #-- 仮想マシン上でコマンドを実行 --#
+        run:
+          aws  sync --delete --region ap-northeast-1 ./files/ s3://actionstest/
+        
        
       
 #リポジトリに変更をpushするたびに上記が自動的に実行される
