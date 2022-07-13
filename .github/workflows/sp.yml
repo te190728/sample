@@ -3,12 +3,11 @@ name: Deploy to Amazon
 on:
   push:
     branches:
-      - main
+      - main #メインブランチにアップしたら
 
 jobs:
   Test:
-    name: Test
-    runs-on: windows-2022
+    runs-on: windows-latest #Windows環境で実行
 
     steps:
       - name: echoTest
