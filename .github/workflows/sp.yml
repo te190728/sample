@@ -1,14 +1,17 @@
-name: learn-github-actions
-on: [push]
+name: Deploy to Amazon
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  check-bats-version:
+  Test:
+    name: Test
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: echoTest
+        run: echo "Test"
       
 #リポジトリに変更をpushするたびに上記が自動的に実行される
