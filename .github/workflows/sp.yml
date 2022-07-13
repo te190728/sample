@@ -8,7 +8,7 @@ on:
 jobs:
   Test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: windows-2022
 
     steps:
       - name: echoTest
